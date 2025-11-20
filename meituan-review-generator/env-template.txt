@@ -1,0 +1,4 @@
+# DeepSeek API 配置
+# 从 https://platform.deepseek.com/ 获取 API 密钥
+# 复制此文件内容到 .env.local 文件中，并填入你的实际 API 密钥
+DEEPSEEK_API_KEY=your_deepseek_api_key_here
