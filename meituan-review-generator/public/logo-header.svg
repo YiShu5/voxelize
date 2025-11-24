@@ -1,0 +1,49 @@
+<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7A5CFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6A8FFF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- 几何图形：S + Y 抽象组合，代表智能评价 -->
+  <!-- S 形状的上半部分 -->
+  <path d="M8 12 Q12 8, 16 10 Q20 12, 20 16" 
+        stroke="url(#logoGradient)" 
+        stroke-width="2.5" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        filter="url(#glow)"/>
+  
+  <!-- S 形状的下半部分 -->
+  <path d="M20 16 Q20 20, 24 22 Q28 24, 32 20" 
+        stroke="url(#logoGradient)" 
+        stroke-width="2.5" 
+        fill="none" 
+        stroke-linecap="round" 
+        stroke-linejoin="round"
+        filter="url(#glow)"/>
+  
+  <!-- Y 形状的左侧 -->
+  <path d="M20 16 L20 28" 
+        stroke="url(#logoGradient)" 
+        stroke-width="2.5" 
+        stroke-linecap="round"
+        filter="url(#glow)"/>
+  
+  <!-- 智能评价的抽象点阵（代表 AI/智能） -->
+  <circle cx="12" cy="20" r="1.5" fill="url(#logoGradient)" opacity="0.8"/>
+  <circle cx="28" cy="18" r="1.5" fill="url(#logoGradient)" opacity="0.8"/>
+  <circle cx="24" cy="26" r="1.5" fill="url(#logoGradient)" opacity="0.8"/>
+</svg>
+
+
+

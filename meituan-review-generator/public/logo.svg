@@ -1,13 +1,33 @@
-<svg width="280" height="72" viewBox="0 0 280 72" xmlns="http://www.w3.org/2000/svg">
-  <!-- 图标背景 -->
-  <rect width="72" height="72" rx="18" fill="#0A0F2C"/>
-  <!-- 闪电图案 -->
-  <path d="M22 46 L36 26 L50 46" stroke="#4ADEFF" stroke-width="6" stroke-linecap="round" fill="none"/>
-  <circle cx="36" cy="54" r="4" fill="#7CF4FF"/>
-
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#31D9FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9B5CFF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Logo 图标区域 -->
+  <g transform="translate(0, 10)">
+    <!-- 主图标：抽象化的评价/智能符号 -->
+    <circle cx="20" cy="20" r="18" fill="url(#brandGradient)" opacity="0.15"/>
+    <path d="M12 20 L20 12 L28 20 L20 28 Z" fill="url(#brandGradient)" filter="url(#glow)"/>
+    <circle cx="20" cy="20" r="6" fill="url(#brandGradient)" opacity="0.8"/>
+  </g>
+  
   <!-- 主标题：美评宝 -->
-  <text x="120" y="46" font-family="Inter, sans-serif" font-size="36" font-weight="700" letter-spacing="-0.5px" fill="#23D2FF" style="text-shadow: 0 0 8px rgba(64, 224, 255, 0.35);">美评宝</text>
-
+  <text x="50" y="32" font-family="Inter, 'PingFang SC', sans-serif" font-size="24" font-weight="700" letter-spacing="-0.5px" fill="url(#brandGradient)">
+    美评宝
+  </text>
+  
   <!-- 副标题：ReviewX -->
-  <text x="120" y="63" font-family="Inter, sans-serif" font-size="14" font-weight="400" fill="#7EE6FF">ReviewX</text>
+  <text x="50" y="48" font-family="Inter, sans-serif" font-size="12" font-weight="500" letter-spacing="1px" fill="url(#brandGradient)" opacity="0.8">
+    ReviewX
+  </text>
 </svg>

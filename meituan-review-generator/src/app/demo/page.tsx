@@ -1,28 +1,9 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Demo() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50 to-indigo-50">
-      {/* Navigation Header */}
-      <nav className="relative z-10 px-6 py-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image
-              src="/logo.svg"
-              alt="美评宝"
-              width={180}
-              height={45}
-              className="h-11 w-auto"
-            />
-          </Link>
-          <div className="hidden md:flex items-center gap-6 text-sm text-gray-600">
-            <span>产品特性</span>
-            <span>使用说明</span>
-            <span>关于我们</span>
-          </div>
-        </div>
-      </nav>
+      {/* Navigation Header - 使用全局 AppHeader */}
 
       {/* Main Content */}
       <div className="px-6 py-12">
@@ -38,7 +19,7 @@ export default function Demo() {
             </div>
             <h1 className="text-4xl lg:text-5xl font-bold leading-tight mb-4">
               <span className="bg-gradient-to-r from-indigo-600 via-purple-600 to-indigo-800 bg-clip-text text-transparent">
-                美评宝使用演示
+                美评宝 ReviewX 使用演示
               </span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
@@ -125,7 +106,7 @@ export default function Demo() {
                     { name: '真实自然型', icon: '🌱', desc: '朴实自然的评价风格', active: true },
                     { name: '服务夸赞型', icon: '⭐', desc: '突出服务体验', active: false },
                     { name: '高能好评型', icon: '🔥', desc: '充满热情的评价', active: false },
-                    { name: '吐槽转好评型', icon: '💭', desc: '先吐槽后好评', active: false },
+                    { name: '人情温度型', icon: '💛', desc: '真实有温度、贴近生活的正向评价', active: false },
                     { name: '理性分析型', icon: '📊', desc: '专业理性分析', active: false },
                     { name: '家庭使用场景型', icon: '🏠', desc: '家庭生活场景', active: false }
                   ].map((style) => (
@@ -162,52 +143,7 @@ export default function Demo() {
               </div>
             </div>
 
-            {/* Step 3 */}
-            <div className="bg-white rounded-3xl shadow-xl border border-gray-100 overflow-hidden">
-              <div className="bg-gradient-to-r from-green-600 to-emerald-600 p-8">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-white rounded-2xl flex items-center justify-center">
-                    <span className="text-2xl font-bold text-green-600">3</span>
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-semibold text-white mb-1">上传商品图片（可选）</h3>
-                    <p className="text-green-100">上传商品图片，AI自动识别并优化评价内容</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="p-8">
-                <div className="bg-white border-2 border-dashed border-gray-300 rounded-3xl p-12 text-center mb-8">
-                  <div className="w-20 h-20 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-3xl flex items-center justify-center mx-auto mb-6 shadow-lg">
-                    <svg className="w-10 h-10 text-white" stroke="currentColor" fill="none" viewBox="0 0 48 48">
-                      <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">上传商品图片</h3>
-                  <p className="text-gray-600 text-base mb-4">系统将自动识别商品类别，生成更精准的评价</p>
-                  <p className="text-sm text-gray-500">支持 JPG、PNG 格式，最大 5MB</p>
-                </div>
-
-                <div className="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200">
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-8 h-8 bg-green-100 rounded-lg flex items-center justify-center">
-                      <svg className="w-4 h-4 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <span className="text-gray-800 font-medium">图片识别完成</span>
-                  </div>
-                  <div className="flex items-center gap-3 ml-11">
-                    <div className="absolute bottom-4 left-4 bg-gradient-to-r from-indigo-500 to-purple-600 text-white px-4 py-2 rounded-2xl text-sm font-medium shadow-lg flex items-center gap-2">
-                      <span>🔍</span>
-                      <span>识别结果：美的冰箱</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            {/* Step 4 - Result */}
+            {/* Step 3 - Result */}
             <div className="bg-white rounded-3xl shadow-2xl border border-gray-100 overflow-hidden">
               <div className="bg-gradient-to-r from-green-500 to-emerald-600 px-8 py-4">
                 <div className="flex items-center gap-3">
@@ -265,7 +201,7 @@ export default function Demo() {
           <div className="text-center">
             <div className="bg-gradient-to-r from-indigo-600 to-purple-600 rounded-3xl p-12 text-white shadow-2xl">
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                现在就开始使用美评宝
+                现在就开始使用美评宝 ReviewX
               </h2>
               <p className="text-xl text-indigo-100 mb-8 max-w-2xl mx-auto">
                 体验AI驱动的智能评价生成，让您的购物体验更完美

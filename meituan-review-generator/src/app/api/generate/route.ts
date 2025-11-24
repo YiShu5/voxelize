@@ -4,7 +4,6 @@ type GenerateRequestBody = {
   category?: string;
   style?: string;
   productName?: string;
-  imageBase64?: string;
 };
 
 type DeepSeekResponse = {
@@ -23,7 +22,7 @@ const STYLE_OPTIONS = [
   "真实自然型",
   "服务夸赞型",
   "高能好评型",
-  "吐槽转好评型",
+  "人情温度型",
   "理性分析型",
   "家庭使用场景型",
 ] as const;
@@ -57,7 +56,6 @@ export async function POST(request: NextRequest) {
     const category = body.category?.trim();
     const style = body.style?.trim();
     const productName = body.productName?.trim();
-    const imageBase64 = body.imageBase64?.trim();
 
     if (!category || !style) {
       return NextResponse.json(
@@ -101,23 +99,18 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    const cleanedImageBase64 = imageBase64
-      ? (imageBase64.includes(",")
-          ? imageBase64.split(",")[1]
-          : imageBase64
-        ).replace(/\s+/g, "")
-      : "";
-
-    const imageHint = cleanedImageBase64
-      ? "用户上传了商品图片（base64 数据已提供）。请根据常见家电/数码产品体验结合图像可能的信息，描述真实感受，但不要提及“根据图片”或“我看到图片”等字样。"
-      : "用户未上传图片，可忽略图像描述。";
+    // 根据评价风格添加特殊说明
+    let styleInstruction = '';
+    if (style === '人情温度型') {
+      styleInstruction = '评价风格要求：采用真实、有温度、贴近生活的正向评价风格，强调人与人之间的温暖互动和真实感受，体现人情味和温度感，不出现任何负面情绪词。';
+    }
 
     const prompt = `你是一名真实的美团消费者，即将给出一条符合平台规范的评价，请满足以下要求：
 1. 字数保持在60-120字之间，语气口语化、真实自然。
-2. 不出现品牌词、极端词和广告语，禁止带有“官方、客服、旗舰店”等暗示托评的词汇。
+2. 不出现品牌词、极端词和广告语，禁止带有"官方、客服、旗舰店"等暗示托评的词汇。
 3. 商品类别：${category}；评价风格：${style}；商品名称：${productName || "未提供"}。
-4. 可从外观质感、使用场景、噪音/性能、配送/安装体验、售后感受等角度展开描述。
-5. ${imageHint}
+${styleInstruction ? `4. ${styleInstruction}` : '4. 可从外观质感、使用场景、噪音/性能、配送/安装体验、售后感受等角度展开描述。'}
+${styleInstruction ? '5. 可从外观质感、使用场景、噪音/性能、配送/安装体验、售后感受等角度展开描述。' : ''}
 
 请直接输出最终评价内容，不要带标题。`;
 
